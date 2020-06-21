@@ -6,6 +6,10 @@ const app =express();
 //use Express Router
 app.use('/',require('./Routes'));
 
+//setup view engine
+app.set('view engine','ejs');
+app.set('views','./Views');
+
 app.listen(port,function(err){
     if(err){
         console.log(`There is error in running the server: ${err}` );
