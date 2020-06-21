@@ -1,7 +1,10 @@
 const express = require('express');
 const port = 8000;
-
 const app =express();
+const expressLayouts = require('express-ejs-layouts');
+
+//use layouts
+app.use(expressLayouts);
 
 //use Express Router
 app.use('/',require('./Routes'));
