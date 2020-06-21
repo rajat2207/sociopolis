@@ -6,6 +6,12 @@ const homeController = require('../Controllers/home_controllers');
 //to check whether router is working or not
 console.log("Router loaded");
 
-Router.get('/',homeController.home);
+//for any further routes, access from here
+//Router.use('/routername',require('filename'));
+
+Router.get('/',homeController.home2);
+Router.use('/users',require('./users'));
+Router.use('/posts',require('./posts'));
+
 
 module.exports= Router;
