@@ -24,3 +24,12 @@ module.exports.signUp=function (req,res) {
     })
     
 }
+
+module.exports.create=function(req,res) {
+    // TODO later
+}
+
+module.exports.createSession= function (req,res) {
+    // TODO later
+    
+}

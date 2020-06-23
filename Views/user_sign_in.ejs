@@ -4,9 +4,9 @@
     <Img src="/icons/4.png">
     <!-- <h1>SocioPolis</h1> -->
     <h1>Login</h1>
-    <form>
-        <input type="text" placeholder="Email" required >
-        <input type="password" placeholder="Password" required >
+    <form action="/users/create-session">
+        <input type="text" placeholder="Email" name="email"  required >
+        <input type="password" placeholder="Password" name="password" required >
         <br>
         <span>New User?<br><a href="/users/sign_up">ClickHere</a> to create an account</span>
         <button type="submit">SIGn IN</button>
