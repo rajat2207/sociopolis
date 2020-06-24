@@ -1,14 +1,5 @@
-module.exports.profile=function (req,res) {
-    res.render('profile',{
-        'title' : 'Profile'
-    })
-}
+const User= require('../Models/user.js')
 
-module.exports.users=function (req,res) {
-    res.render('users',{
-        'title': 'users'
-    });
-}
 
 //render the sign in page
 module.exports.signIn=function(req,res){
@@ -25,8 +16,32 @@ module.exports.signUp=function (req,res) {
     
 }
 
+//create a new account in the datatbase
 module.exports.create=function(req,res) {
-    // TODO later
+    if(req.body.password!=req.body.confirm_password){
+        return res.redirect('back');
+    }
+
+    User.findOne({email: req.body.email},function (err,user) {
+        if(err){
+            console.log('error in finding the user in signing up');
+            return;
+        }
+
+        if(!user){
+            User.create(req.body, function(err,user){
+                if(err){
+                    console.log('error in creating the user in signing up');
+                    return;
+                }
+
+                return res.redirect('/users/sign-in')
+            })
+        }else{
+            return res.redirect('back');
+        }
+        
+    })
 }
 
 module.exports.createSession= function (req,res) {
