@@ -17,8 +17,13 @@ passport.use(new LocalStrategy({
                 return done(err);
             }
 
-            if (!user || user.password != password){
-                console.log('Invalid Username/Password');
+            if (!user){
+                console.log('Invalid Username');
+                return done(null,false);
+            } 
+            
+            if(user.password != password){
+                console.log('Invalid Password');
                 return done(null, false);
             }
 
