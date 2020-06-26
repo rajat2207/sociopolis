@@ -1,5 +1,12 @@
 const User= require('../Models/user.js')
 
+//render the profile page
+module.exports.profile=function(req,res){
+    return res.render('user_profile',{
+        'title': 'SocioPolis | Profile'
+    })
+}
+
 
 //render the sign in page
 module.exports.signIn=function(req,res){
@@ -44,7 +51,7 @@ module.exports.create=function(req,res) {
     })
 }
 
+//sign in and create a session for the user
 module.exports.createSession= function (req,res) {
-    // TODO later
     return res.redirect('/');
 }
