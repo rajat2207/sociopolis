@@ -25,12 +25,28 @@ app.use(expressLayouts);
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
 
-//use Express Router
-app.use('/',require('./Routes'));
+
 
 //setup view engine
 app.set('view engine','ejs');
 app.set('views','./Views');
+
+app.use(session({
+    name: 'sociopolis',
+    // TODO change the secret before deployment in production mode
+    secret: 'blahsomething',
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+        maxAge: (1000 * 60 * 100)
+    }
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+//use Express Router
+app.use('/',require('./Routes'));
 
 app.listen(port,function(err){
     if(err){
