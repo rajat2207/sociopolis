@@ -16,7 +16,11 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav ml-auto">
             <% if(locals.user){ %>
-            
+                <li class="nav-item">
+                    <a class="nav-link" href="/">
+                        Home
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/users/profile">
                         <%= user.name %>
@@ -30,6 +34,11 @@
             
             <% }else{ %>
                 
+                <li class="nav-item">
+                    <a class="nav-link" href="/">
+                        Home
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/users/sign-in">
                         Sign In
