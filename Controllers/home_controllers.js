@@ -1,10 +1,23 @@
+const Post=require('../Models/posts.js');
+
+
 //Format: module.exports.actionName = function(req,res){}
 
 module.exports.home=function(req,res) {
-    console.log(req.cookies);
-    res.cookie('user_id',25);
-    return res.render('home',{
-        'title': 'SocioPolis | Home'
+    
+    // Post.find({},function(err,posts){
+    //     return res.render('home',{
+    //         title: 'SocioPolis | Home',
+    //         posts: posts
+    //     })
+    // })
+
+    //populate the user of each post
+    Post.find({}).populate('user').exec(function(err,posts){
+        return res.render('home',{
+            title: 'SocioPolis | Home',
+            posts: posts
+        })
     })
 }
 
