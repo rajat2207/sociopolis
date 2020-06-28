@@ -1,0 +1,23 @@
+#footer{
+    // height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgb(71, 58, 58);
+    // border-top: 0.5px solid black;
+    position: static;
+    margin-bottom: 0;
+    color: white;
+    // color: rgb(216, 207, 207);
+    ul{
+        margin-top: 1rem;
+        li{
+            display: inline-block;
+            margin: 0.5rem;
+            a{
+                color : white;
+            }
+        }
+    }
+}

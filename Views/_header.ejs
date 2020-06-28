@@ -1,8 +1,11 @@
 <header>
     
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top">
         <!-- Brand -->
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">
+            <img src="/icons/4.png" width="60" height="50"  alt="">
+    SocioPolis
+        </a>
       
         <!-- Toggler/collapsibe Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -11,7 +14,7 @@
       
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav ml-auto">
             <% if(locals.user){ %>
             
                 <li class="nav-item">
