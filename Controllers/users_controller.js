@@ -2,9 +2,14 @@ const User= require('../Models/user.js')
 
 //render the profile page
 module.exports.profile=function(req,res){
-    return res.render('user_profile',{
-        'title': 'SocioPolis | Profile'
-    })
+    User.findById(req.params.id,function(err,user){
+
+        return res.render('user_profile',{
+            'title': 'SocioPolis | Profile',
+            'profile_user':user
+        });
+
+    });
 }
 
 
