@@ -1,6 +1,8 @@
 const Comment= require('../Models/comment');
 const Post=require('../Models/posts');
 
+//lets dont add async await and keep it the same for future reference
+
 
 module.exports.create= function(req,res){
     Post.findById(req.body.post,function (err,post) {

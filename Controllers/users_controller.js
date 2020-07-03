@@ -1,5 +1,7 @@
 const User= require('../Models/user.js')
 
+//lets dont add async await in this conr=troller and keep it same for future reference
+
 //render the profile page
 module.exports.profile=function(req,res){
     User.findById(req.params.id,function(err,user){
