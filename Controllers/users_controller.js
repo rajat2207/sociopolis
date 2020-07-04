@@ -18,6 +18,9 @@ module.exports.profile=function(req,res){
 module.exports.update=function(req,res){
     if(req.user.id==req.params.id){
         User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
+
+            req.flash('success','Profile Updated')
+
             return res.redirect('back');
         });
     }else{
@@ -51,25 +54,31 @@ module.exports.signUp=function (req,res) {
 //create a new account in the datatbase
 module.exports.create=function(req,res) {
     if(req.body.password!=req.body.confirm_password){
+        
+        req.flash('warning',"passwords don't match!")
+
         return res.redirect('back');
     }
 
     User.findOne({email: req.body.email},function (err,user) {
         if(err){
-            console.log('error in finding the user in signing up');
+            req.flash('error',err);
             return;
         }
 
         if(!user){
             User.create(req.body, function(err,user){
                 if(err){
-                    console.log('error in creating the user in signing up');
+                    req.flash('error','error in creating the user in signing up');
                     return;
                 }
 
+                req.flash('success','Accout Successfully Created!')
                 return res.redirect('/users/sign-in')
             })
         }else{
+
+            req.flash('error','Username already in use');
             return res.redirect('back');
         }
         

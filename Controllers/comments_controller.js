@@ -33,9 +33,11 @@ module.exports.destroy=function(req,res){
                 comment.remove();
 
                 Post.findByIdAndUpdate(postId, { $pull: {comments: req.params.id }},function(err,post){
+                    req.flash('success',"Comment successfully removed");
                     return res.redirect('back');
                 });
             }else{
+                req.flash('error','You are not authorized');
                 return res.redirect('back');
             }
     });
