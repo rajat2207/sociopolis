@@ -52,7 +52,7 @@ module.exports.destroy=function(req,res){
                         });
                     };
 
-                    req.flash('success',"Comment successfully removed");
+                    req.flash('success',"Comment Deleted!");
                     return res.redirect('back');
                 });
             }else{
