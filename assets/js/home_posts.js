@@ -66,4 +66,10 @@ let deletePost=function(deleteLink){
     });
 }
 
+let deletePostButtons= $('.delete-post-button');
+
+for(let i=0;i<deletePostButtons.length;i++){
+    deletePost(deletePostButtons[i]);
+}
+
 createPost();
