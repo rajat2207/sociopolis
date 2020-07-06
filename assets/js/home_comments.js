@@ -1,3 +1,5 @@
+import { get } from "mongoose";
+
 let createComment=function(){
     let newCommentForm=$('#new-comment-form');
     
@@ -7,11 +9,11 @@ let createComment=function(){
         $.ajax({
             type:'post',
             url:'/comments/create',
-            data: newPostForm.serialize(),
+            data: newCommentForm.serialize(),
             success: function(data){
-                let newComment=newCommentDOM(data.data.post);
+                let newComment=newCommentDOM(data.data.comment);
                 $('#posts-comments-list>ul').prepend(newComment);
-                deletePost($('.delete-comment-button', newComment));
+                deleteComment($('.delete-comment-button', newComment));
             },
             error: function(error){
                 console.log(error.responseText);
@@ -38,7 +40,7 @@ let newCommentDOM = function(comment){
             </li>`)
 }
 
-let deletePost=function(deleteLink){
+let deleteComment=function(deleteLink){
     $(deleteLink).click(function(e){
         e.preventDefault();
         $.ajax({
@@ -57,7 +59,7 @@ let deletePost=function(deleteLink){
 let deleteCommentButtons= $('.delete-comment-button');
 
 for(let i=0;i<deleteCommentButtons.length;i++){
-    deletePost(deleteCommentButtons[i]);
+    deleteComment(deleteCommentButtons[i]);
 }
 
 createComment();
