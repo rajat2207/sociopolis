@@ -1,4 +1,6 @@
 const User= require('../Models/user.js')
+const fs=require('fs');
+const path=require('path');
 
 //lets dont add async await in this conr=troller and keep it same for future reference
 
@@ -40,6 +42,11 @@ module.exports.update= async function(req,res){
                 user.email=req.body.email;
 
                 if(req.file){
+
+                    if(user.avatar){
+                        fs.unlinkSync(path.join(__dirname,'..',user.avatar));
+                    }
+
                     //this is saving the path of the uploaded file into the avatar feild in the user
                     user.avatar=User.avatarPath+'/'+req.file.filename;
                 }
