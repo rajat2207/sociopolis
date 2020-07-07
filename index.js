@@ -35,6 +35,9 @@ app.use(cookieParser());
 //linking the styling parts
 app.use(express.static('./assets'));
 
+//make the upload path available to the browser
+app.use('/uploads',express.static('./uploads'));
+
 //use layouts
 app.use(expressLayouts);
 
