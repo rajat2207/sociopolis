@@ -13,6 +13,8 @@ const MongoStore=require('connect-mongo')(session);
 const sassMiddleware= require('node-sass-middleware');
 const flash=require('connect-flash');
 const customMWare= require('./Config/middleware');
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
 
 
 app.use(sassMiddleware({
