@@ -1,0 +1,1 @@
+APIs and JWT will be used in case we are using a frontend framework as they communicate only with APIs.
