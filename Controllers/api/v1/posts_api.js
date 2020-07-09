@@ -5,11 +5,12 @@ module.exports.index = async function(req,res){
     
     let posts=await Post.find({})
         .sort('-createdAt')
-        .populate('user')
+        .populate('user','-password')
         .populate({
             path: 'comments',
             populate:{
-                path:'user'
+                path:'user',
+                select:'-password'
             }
         });
 
