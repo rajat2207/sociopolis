@@ -5,10 +5,10 @@ const ExtractJWT=require('passport-jwt').ExtractJwt;
 
 const User=require('../Models/user');
 
-let opts={
-    jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken(),
-    secretOrKey = 'sociopolis'
-}
+let opts={}
+
+opts.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken(),
+opts.secretOrKey = 'sociopolis'
 
 //authentication using passport
 passport.use(new JWTStrategy(opts,function(jwtPayLoad,done){
