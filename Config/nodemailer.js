@@ -9,10 +9,12 @@ let transporter=nodemailer.createTransport({
     port:587,
     secure: false,
     auth:{
-        user:'rajatraj2207',
-        password:'rajat22072001'
-
-    }
+        user:'sociopolissite@gmail.com',
+        pass:'sociopolis123'
+    },tls: {
+        // do not fail on invalid certs
+        rejectUnauthorized: false
+    },
 });
 
 //setting up template for emails

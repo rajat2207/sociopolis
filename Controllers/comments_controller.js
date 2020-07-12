@@ -1,24 +1,28 @@
 const Comment= require('../Models/comment');
 const Post=require('../Models/posts');
+const commentsMailer=require('../mailer/comments_mailer');
 
-//lets dont add async await and keep it the same for future reference
-
-
-module.exports.create= function(req,res){
-    Post.findById(req.body.post,function (err,post) {
+module.exports.create = async function(req,res){
+    
+    try{
+        let post= await Post.findById(req.body.post);
         
-        if(post){
-            Comment.create({
-                //creating the comment
-                content: req.body.content,
-                post: req.body.post,
-                user: req.user._id
-            },function(err,comment){
-                // updating the post and adding the comment to it
+            if(post){
+                let comment=await Comment.create({
+                    //creating the comment
+                    content: req.body.content,
+                    post: req.body.post,
+                    user: req.user._id
+                });
+                    // updating the post and adding the comment to it
                 post.comments.push(comment);
                 post.save();
+                
+                comment= await comment.populate('user','name email').execPopulate();
+                commentsMailer.newComment(comment);
 
                 if(req.xhr){
+
                     return res.status(200).json({
                         data:{
                             comment:comment
@@ -26,11 +30,13 @@ module.exports.create= function(req,res){
                         message: "Comment Created!"
                     });
                 }
-
+    
                 res.redirect('/');
-            });
-        }
-    });
+                
+            }
+    }catch(err){
+        req.flash('error',err)
+    }
 }
 
 module.exports.destroy=function(req,res){
