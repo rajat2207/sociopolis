@@ -13,6 +13,7 @@ router.post('/update/:id',passport.checkAuthentication,usersController.update);
 
 router.get('/sign-in',usersController.signIn);
 router.get('/sign-up',usersController.signUp);
+router.get('/forgot-password',usersController.forgotPassword);
 
 router.post('/create',usersController.create);
 

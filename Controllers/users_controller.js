@@ -136,3 +136,9 @@ module.exports.destroySession= function (req,res) {
     req.flash('success', 'You have been Logged Out');
     return res.redirect('/');
 }
+
+module.exports.forgotPassword= function(req,res){
+    return res.render('forgot_password',{
+        title:'SocioPolis | Forgot Password'
+    })
+}
