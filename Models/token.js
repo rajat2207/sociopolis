@@ -1,23 +1,23 @@
 const mongoose=require('mongoose');
 
 
-const tokenSchema = new mongoose.Schema({
+const resetTokenSchema = new mongoose.Schema({
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
-    token:{
+    resetToken:{
         type : String,
         required : true
     },
     isValid:{
-        type : Boolean,
-        required : true
+        type: Boolean,
+        required: true
     }
 },{
     timestamps: true
 });
 
-const Token =mongoose.model('Token',tokenSchema);
+const ResetToken =mongoose.model('ResetToken',resetTokenSchema);
 
-module.exports= Token;
+module.exports= ResetToken;

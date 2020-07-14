@@ -13,7 +13,13 @@ router.post('/update/:id',passport.checkAuthentication,usersController.update);
 
 router.get('/sign-in',usersController.signIn);
 router.get('/sign-up',usersController.signUp);
-router.get('/forgot-password',usersController.forgotPassword);
+
+//password reset links
+router.get('/password-reset',usersController.passwordResetPage);
+router.post('/password-reset',usersController.passwordReset);
+router.get('/password-reset/done',usersController.passwordResetDone);
+router.get('/password-reset/:token',usersController.changePasswordPage);
+router.post('/password-reset/:token',usersController.changePassword);
 
 router.post('/create',usersController.create);
 
