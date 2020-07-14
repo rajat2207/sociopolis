@@ -231,23 +231,35 @@ module.exports.changePassword = async function(req,res){
         try{
             let token=await Token.findOne({resetToken : req.params.token, isValid:true});
 
-            let tokenUser=token.user;
+            if(token){
+                let tokenUser=token.user;
 
-            let user=await User.findById(tokenUser._id);
+                let user=await User.findById(tokenUser._id);
 
-            user.password=req.body.new_password;
+                user.password=req.body.new_password;
 
-            user.save();
+                user.save();
 
-            token.isValid=false;
+                token.isValid=false;
 
-            token.save();
+                token.save();
 
-            let newToken= Token.create({
-                user : user,
-                resetToken : crypto.randomBytes(20).toString('hex'),
-                isValid : true
-            })
+                let newToken= Token.create({
+                    user : user,
+                    resetToken : crypto.randomBytes(20).toString('hex'),
+                    isValid : true
+                })
+
+                req.flash('success','Password Updated');
+                return res.redirect('/users/sign-in');
+            
+            }else{
+
+                return res.render('change_password_fail',{
+                    title:'SocioPolis | Password Reset'
+                });
+            }
+            
         }catch(err){
             console.log("error", err);
             return;
