@@ -7,7 +7,7 @@ const passwordResetMailer=require('../mailer/password_reset_mailer');
 const passwordResetWorker=require('../workers/password_reset_worker');
 const queue=require('../Config/kue');
 
-//lets dont add async await in this conr=troller and keep it same for future reference
+//lets don't add async await in this controller and keep it same for future reference
 
 //render the profile page
 module.exports.profile=function(req,res){
@@ -244,7 +244,7 @@ module.exports.changePassword = async function(req,res){
 
                 token.save();
 
-                let newToken= Token.create({
+                await Token.create({
                     user : user,
                     resetToken : crypto.randomBytes(20).toString('hex'),
                     isValid : true

@@ -11,9 +11,9 @@ module.exports.toggleLike=async function(req,res){
         let deleted = false;
 
         if(req.query.type=='Post'){
-            likeable = await Post.findById(req.query.id).populate('Likes');
+            likeable = await Post.findById(req.query.id).populate('likes');
         }else{
-            likeable = await Comment.findById(req.query.id).populate('Likes');
+            likeable = await Comment.findById(req.query.id).populate('likes');
         }
 
 
@@ -41,14 +41,15 @@ module.exports.toggleLike=async function(req,res){
                 onModel : req.query.type
             }) 
 
-            likeable.likes.push(newLike);
-
+            likeable.likes.push(newLike._id);
             likeable.save();
-
-            return res.json(200,{
-                message: "Request Successful"
-            });
         }
+        return res.json(200,{
+            message: "Request Successful",
+            data: {
+                deleted: deleted
+            }
+        });
 
     }catch(err){
         console.log(err);
