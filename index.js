@@ -18,6 +18,11 @@ const customMWare= require('./Config/middleware');
 const multer  = require('multer')
 const upload = multer({ dest: 'uploads/' })
 
+//setup the chat server to be used with socket.io
+const chatServer = require('http').Server(app);
+const chatSockets=require('./Config/chat_sockets').chatSockets(chatServer); 
+chatServer.listen(5000);
+console.log("chat server is listening on port 5000")
 
 app.use(sassMiddleware({
     /* Options */
