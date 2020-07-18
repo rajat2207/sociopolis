@@ -1,4 +1,5 @@
 const passport=require('passport');
+const env=require('./environment');
 
 const JWTStrategy=require('passport-jwt').Strategy;
 const ExtractJWT=require('passport-jwt').ExtractJwt;
@@ -8,7 +9,7 @@ const User=require('../Models/user');
 let opts={}
 
 opts.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken(),
-opts.secretOrKey = 'sociopolis'
+opts.secretOrKey = env.jwt_secret_key;
 
 //authentication using passport
 passport.use(new JWTStrategy(opts,function(jwtPayLoad,done){

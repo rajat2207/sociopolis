@@ -1,4 +1,5 @@
 const express = require('express');
+const env=require('./Config/environment');
 const cookieParser = require('cookie-parser');
 const port = 8000;
 const app =express();
@@ -17,6 +18,7 @@ const flash=require('connect-flash');
 const customMWare= require('./Config/middleware');
 const multer  = require('multer')
 const upload = multer({ dest: 'uploads/' })
+const path=require('path');
 
 //setup the chat server to be used with socket.io
 const chatServer = require('http').Server(app);
@@ -26,8 +28,8 @@ console.log("chat server is listening on port 5000")
 
 app.use(sassMiddleware({
     /* Options */
-    src: './assets/scss',
-    dest: './assets/css',
+    src: path.join(__dirname,env.asset_path,'scss'),
+    dest: path.join(__dirname,env.asset_path,'css'),
     debug: true,
     outputStyle: 'extended',
     prefix:  '/css'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
@@ -40,7 +42,7 @@ app.use(express.urlencoded());
 app.use(cookieParser());
 
 //linking the styling parts
-app.use(express.static('./assets'));
+app.use(express.static(env.asset_path));
 
 //make the upload path available to the browser
 app.use('/uploads',express.static('./uploads'));
@@ -62,7 +64,7 @@ app.set('views','./Views');
 app.use(session({
     name: 'sociopolis',
     // TODO change the secret before deployment in production mode
-    secret: 'blahsomething',
+    secret: env.session_cookie_key,
     saveUninitialized: false,
     resave: false,
     cookie: {
