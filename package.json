@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon start index.js"
+    "start": "nodemon start index.js",
+    "prod_start": "NODE_ENV=production nodemon index.js"
   },
   "author": "Rajat Raj",
   "license": "ISC",
