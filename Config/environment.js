@@ -50,7 +50,7 @@ const production = {
 };
 
 module.exports =
-  eval(process.env.SOCIOPOLIS_ENVIRONMENT) === undefined
+  eval(process.env.SOCIOPOLIS_ENVIRONMENT) == undefined
     ? development
     : eval(process.env.SOCIOPOLIS_ENVIRONMENT);
 
