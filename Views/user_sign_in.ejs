@@ -1,35 +1,44 @@
-<link rel="stylesheet" href="/css/sign_in.css">
+<link rel="stylesheet" href="<%= assetPath('css/sign_in.css') %>" />
 
 <div id="container1">
-    <Img src="/icons/4.png">
-    <!-- <h1>SocioPolis</h1> -->
-    <h1>Login</h1>
-    <form action="/users/create-session" method="POST">
-        <input type="text" placeholder="Email" name="email"  required >
-        <input type="password" placeholder="Password" name="password" required >
-        <br>
-        <span><u><a href="/users/password-reset">Forgot Password?</a></u></span>
-        <br>
-        <span>New User?<br><u><a href="/users/sign-up">ClickHere</a></u> to create an account</span>
-        <button type="submit">SIGn IN</button>
-    </form>
+  <Img src="/icons/4.png" />
+  <!-- <h1>SocioPolis</h1> -->
+  <h1>Login</h1>
+  <form action="/users/create-session" method="POST">
+    <input type="text" placeholder="Email" name="email" required />
+    <input type="password" placeholder="Password" name="password" required />
+    <br />
+    <span
+      ><u><a href="/users/password-reset">Forgot Password?</a></u></span
+    >
+    <br />
+    <span
+      >New User?<br /><u><a href="/users/sign-up">ClickHere</a></u> to create an
+      account</span
+    >
+    <button type="submit">SIGn IN</button>
+  </form>
 
-    <a href="/users/auth/google">
-        <button type="button" class="btn btn-light btn-outline-dark">
-                <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
-                Login with Google
-        </button>
-    </a>
-    
-    
+  <a href="/users/auth/google">
+    <button type="button" class="btn btn-light btn-outline-dark">
+      <img
+        width="20px"
+        style="margin-bottom: 3px; margin-right: 5px;"
+        alt="Google sign-in"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
+      />
+      Login with Google
+    </button>
+  </a>
 </div>
 
 <div id="container2">
-    
-    <h2>Welcome To</h2><br>
-    <h1>SocioPolis</h1><br>
-    <h3>Your All In One Social Platform<br>
-    Its Time To Get Social</h3>
-    
+  <h2>Welcome To</h2>
+  <br />
+  <h1>SocioPolis</h1>
+  <br />
+  <h3>
+    Your All In One Social Platform<br />
+    Its Time To Get Social
+  </h3>
 </div>
-
