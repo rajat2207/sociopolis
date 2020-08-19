@@ -1,0 +1,16 @@
+#footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #473a3a;
+  position: static;
+  margin-bottom: 0;
+  color: white; }
+  #footer ul {
+    margin-top: 1rem; }
+    #footer ul li {
+      display: inline-block;
+      margin: 0.5rem; }
+      #footer ul li a {
+        color: white; }

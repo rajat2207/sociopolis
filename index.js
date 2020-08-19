@@ -32,8 +32,8 @@ if (env.name == 'development') {
   app.use(
     sassMiddleware({
       /* Options */
-      src: path.join(__dirname,env.asset_path,'scss'),
-      dest: path.join(__dirname,env.asset_path,'css'),
+      src: path.join(__dirname, env.asset_path, 'scss'),
+      dest: path.join(__dirname, env.asset_path, 'css'),
       debug: true,
       outputStyle: 'extended',
       prefix: '/css', // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
@@ -48,7 +48,7 @@ app.use(express.urlencoded());
 app.use(cookieParser());
 
 //linking the styling parts
-app.use(express.static(__dirname+env.asset_path));
+app.use(express.static(__dirname + env.asset_path));
 
 //make the upload path available to the browser
 app.use('/uploads', express.static('./uploads'));
