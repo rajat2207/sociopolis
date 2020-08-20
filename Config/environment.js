@@ -41,7 +41,7 @@ const development = {
   },
 };
 
-require('dotenv').config();
+// require('dotenv').config();
 
 const production = {
   name: 'production',

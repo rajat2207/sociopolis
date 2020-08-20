@@ -6,11 +6,11 @@ const port = 8000;
 const app = express();
 require('./Config/view-helpers')(app);
 const expressLayouts = require('express-ejs-layouts');
-const db = require('./config/mongoose');
+const db = require('./Config/mongoose');
 // used for session cookie
 const session = require('express-session');
 const passport = require('passport');
-const passportLocal = require('./config/passport-local-strategy');
+const passportLocal = require('./Config/passport-local-strategy');
 const passportJWT = require('./Config/passport-jwt-strategy');
 const passportGoogle = require('./Config/passport-google-oauth2-strategy');
 const MongoStore = require('connect-mongo')(session);
