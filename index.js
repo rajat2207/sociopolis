@@ -43,7 +43,7 @@ if (env.name == 'development') {
 }
 
 //setting up middleware to read the post requests
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: false }));
 
 //setting up the cookie-parser middleware
 app.use(cookieParser());
